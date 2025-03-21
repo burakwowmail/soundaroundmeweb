@@ -1,0 +1,21 @@
+{
+  "name": "yamnet-py",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:js": "terser web/app.js -o dist/web/app.min.js",
+    "copy:html": "copyfiles -u 1 web/index.html web/styles.css dist/web",
+    "copy:model": "copyfiles -u 1 'web/model/**/*' dist/web",
+    "build": "npm run build:js && npm run copy:html && npm run copy:model",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "copyfiles": "^2.4.1",
+    "terser": "^5.19.2"
+  }
+}

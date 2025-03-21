@@ -1,0 +1,147 @@
+:root {
+    --primary-color: #4361ee;
+    --secondary-color: #3f37c9;
+    --accent-color: #4895ef;
+    --background-light: #f8f9fa;
+    --text-primary: #2b2d42;
+    --text-secondary: #555b6e;
+    --success-color: #2ec4b6;
+    --warning-color: #ff9f1c;
+    --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition-speed: 0.3s;
+}
+
+body {
+    color: var(--text-primary);
+    background-color: #f0f2f5;
+    transition: background-color var(--transition-speed) ease;
+}
+
+.container {
+    max-width: 1200px;
+    padding: 2rem;
+}
+
+.status-panel, .time-panel {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: var(--card-shadow);
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+.status-panel:hover, .time-panel:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.status-panel h4, .time-panel h4 {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#dbLevel {
+    transition: color var(--transition-speed) ease;
+    font-weight: 600;
+}
+
+.table {
+    background-color: white;
+    box-shadow: var(--card-shadow);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.table thead th {
+    background-color: var(--background-light);
+    border-bottom: 2px solid #dee2e6;
+    color: var(--text-secondary);
+    font-weight: 600;
+    padding: 1rem;
+}
+
+.table tbody td {
+    padding: 1rem;
+    color: var(--text-primary);
+    vertical-align: middle;
+}
+
+.tab-content {
+    padding: 1.5rem;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+    margin-top: 1rem;
+}
+
+.nav-tabs {
+    border-bottom: none;
+    gap: 0.5rem;
+}
+
+.nav-tabs .nav-link {
+    border: none;
+    color: var(--text-secondary);
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    transition: all var(--transition-speed) ease;
+}
+
+.nav-tabs .nav-link:hover {
+    background-color: var(--background-light);
+    color: var(--primary-color);
+}
+
+.nav-tabs .nav-link.active {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    .status-panel, .time-panel {
+        padding: 1rem;
+    }
+}
+
+/* Animation for new detections */
+@keyframes highlight {
+    0% { background-color: rgba(67, 97, 238, 0.1); }
+    100% { background-color: transparent; }
+}
+
+.new-detection {
+    animation: highlight 1.5s ease-out;
+}
+
+.statistics-container {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.statistics-panel {
+    flex: 1;
+    min-width: 0; /* Prevents flex items from overflowing */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .statistics-container {
+        flex-direction: column;
+    }
+    
+    .statistics-panel {
+        width: 100%;
+    }
+}
