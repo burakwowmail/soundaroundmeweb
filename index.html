@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sound Classification Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="text-center mb-4">
+            <h1 class="display-5 mb-3">Sound Classification Dashboard</h1>
+            <p class="text-muted">Real-time audio analysis and classification</p>
+        </header>
+
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="status-panel">
+                    <h4 id="statusLabel"><i class="bi bi-mic"></i> <span>Initializing...</span></h4>
+                    <h4 id="dbLevel"><i class="bi bi-volume-up"></i> <span>Sound Level: -- dB</span></h4>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="time-panel">
+                    <h4 id="totalTime"><i class="bi bi-clock"></i> <span>Total Time: 00:00:00</span></h4>
+                    <h4 id="quietTime"><i class="bi bi-volume-mute"></i> <span>Quiet Time: 00:00:00</span></h4>
+                    <h4 id="noisyTime"><i class="bi bi-volume-down"></i> <span>Noisy Time: 00:00:00</span></h4>
+                </div>
+            </div>
+        </div>
+
+        <nav class="mt-5">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="session-tab" data-bs-toggle="tab" data-bs-target="#session" type="button">
+                        <i class="bi bi-graph-up"></i> Session Data
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="history-tab" data-bs-toggle="tab" data-bs-target="#history" type="button">
+                        <i class="bi bi-clock-history"></i> History
+                    </button>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="session">
+                <div class="statistics-container">
+                    <div class="statistics-panel">
+                        <h5><i class="bi bi-soundwave"></i> Sound Exposure Statistics</h5>
+                        <div class="table-responsive">
+                            <table class="table" id="exposureTable">
+                                <thead>
+                                    <tr>
+                                        <th>Sound Type</th>
+                                        <th>Duration</th>
+                                        <th>Avg. dB</th>
+                                        <th>Max. dB</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="statistics-panel">
+                        <h5><i class="bi bi-activity"></i> Real-time Sound Detections</h5>
+                        <div class="table-responsive">
+                            <table class="table" id="detectionTable">
+                                <thead>
+                                    <tr>
+                                        <th>Sound Type</th>
+                                        <th>Confidence</th>
+                                        <th>dB Level</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="history">
+                <div class="table-responsive">
+                    <table class="table" id="historyTable">
+                        <thead>
+                            <tr>
+                                <th>Sound Type</th>
+                                <th>Total Duration</th>
+                                <th>Avg. dB</th>
+                                <th>Max. dB</th>
+                                <th>Avg. Confidence</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
